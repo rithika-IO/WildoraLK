@@ -1,0 +1,97 @@
+@import "tailwindcss";
+
+/*
+ * Design tokens. Change colours or fonts here and the whole page follows.
+ * Components use these token names (for example bg-forest-900), never raw hex values.
+ */
+@theme {
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Outfit Variable", ui-sans-serif, system-ui, sans-serif;
+
+  /* Primary: deep forest green */
+  --color-forest-50: #eef5f0;
+  --color-forest-100: #d6e7dc;
+  --color-forest-200: #b3d2bf;
+  --color-forest-400: #5f9e7b;
+  --color-forest-600: #2f6b4f;
+  --color-forest-700: #285a43;
+  --color-forest-800: #1f4a37;
+  --color-forest-900: #17382a;
+  --color-forest-950: #0e2519;
+
+  /* Backgrounds: warm cream and sand */
+  --color-cream: #fbf7ee;
+  --color-sand-100: #f3ead8;
+  --color-sand-200: #e8dbbf;
+  --color-sand-300: #d8c69c;
+
+  /* Accent: amber. Use accent-700 for text on light backgrounds. */
+  --color-accent-300: #f8cf86;
+  --color-accent-400: #f2b544;
+  --color-accent-500: #e29f1d;
+  --color-accent-700: #8a5a06;
+
+  /* Text */
+  --color-ink: #1b2a21;
+  --color-ink-muted: #44564b;
+}
+
+@layer base {
+  html {
+    background-color: var(--color-cream);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-text-size-adjust: 100%;
+    /* Anchor offset for every section: sticky header height (h-16 = 4rem) plus 1rem of space. */
+    scroll-padding-top: 5rem;
+  }
+
+  body {
+    margin: 0;
+    min-width: 320px;
+    overflow-x: clip;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* Visible keyboard focus. Dark sections switch to the lighter amber for contrast. */
+  :focus-visible {
+    outline: 3px solid var(--color-forest-700);
+    outline-offset: 3px;
+    border-radius: 0.25rem;
+  }
+
+  [data-tone="dark"] :focus-visible,
+  [data-tone="dark"]:focus-visible {
+    outline-color: var(--color-accent-400);
+  }
+}
+
+/* Smooth scrolling only for people who have not asked for less motion. */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Respect prefers-reduced-motion: switch off transitions and animations. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
