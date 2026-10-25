@@ -4,13 +4,19 @@ import { Container } from '../components/Container'
 import { Icon } from '../components/Icon'
 import { HEADER_COPY, NAV_LINKS, SITE_NAME } from '../content/site'
 
-const LINK_CLASSES =
-  'rounded-full px-3 py-2 text-sm font-medium text-ink transition-colors duration-200 hover:bg-forest-100 hover:text-forest-900'
+interface HeaderProps {
+  /** True while the hero photo is behind the header. The header is then see-through with light text. */
+  overHero: boolean
+  /** True at the very top of the page. Lower down over the photo, the header turns to dark glass. */
+  atTop: boolean
+}
 
-/** Sticky header: text wordmark, anchor links, and a keyboard-usable mobile menu. */
-export function Header() {
+/** Fixed header: text wordmark, anchor links, and a keyboard-usable mobile menu. */
+export function Header({ overHero, atTop }: HeaderProps) {
   const [open, setOpen] = useState(false)
   const buttonRef = useRef<HTMLButtonElement>(null)
+  // The open mobile menu is cream, so the header turns solid with it.
+  const solid = !overHero || open
 
   // Escape closes the menu and puts focus back on the menu button.
   function handleKeyDown(event: KeyboardEvent<HTMLElement>) {
@@ -20,18 +26,29 @@ export function Header() {
     }
   }
 
+  const linkHover = solid ? 'hover:bg-forest-100 hover:text-forest-900' : 'hover:bg-cream/15'
+
   return (
     <header
       onKeyDown={handleKeyDown}
-      className="sticky top-0 z-40 border-b border-sand-200 bg-cream/95 backdrop-blur"
+      data-tone={solid ? undefined : 'dark'}
+      className={`fixed inset-x-0 top-0 z-40 border-b transition-[background-color,border-color,color,box-shadow] duration-300 ${
+        solid
+          ? 'border-sand-200 bg-cream/95 text-ink shadow-sm backdrop-blur'
+          : atTop
+            ? 'border-transparent bg-transparent text-cream'
+            : 'border-transparent bg-forest-950/45 text-cream backdrop-blur-md'
+      }`}
     >
       <Container className="flex h-16 items-center justify-between gap-4">
         <a
           href="#top"
           aria-label={HEADER_COPY.homeLabel}
-          className="font-display text-2xl font-bold tracking-tight text-forest-900"
+          className={`font-display text-2xl font-bold tracking-tight transition-colors duration-300 ${
+            solid ? 'text-forest-900' : 'text-cream'
+          }`}
         >
-          Wildora<span className="text-accent-700">LK</span>
+          Wildora<span className={solid ? 'text-accent-700' : 'text-accent-300'}>LK</span>
           <span className="sr-only"> ({SITE_NAME})</span>
         </a>
 
@@ -39,7 +56,10 @@ export function Header() {
           <ul className="flex items-center gap-1">
             {NAV_LINKS.map((link) => (
               <li key={link.id}>
-                <a href={`#${link.id}`} className={LINK_CLASSES}>
+                <a
+                  href={`#${link.id}`}
+                  className={`rounded-full px-3 py-2 text-sm font-medium transition-colors duration-200 ${linkHover}`}
+                >
                   {link.label}
                 </a>
               </li>
@@ -54,7 +74,7 @@ export function Header() {
           aria-controls="mobile-menu"
           aria-label={open ? HEADER_COPY.menuCloseLabel : HEADER_COPY.menuOpenLabel}
           onClick={() => setOpen((value) => !value)}
-          className="inline-flex h-11 w-11 items-center justify-center rounded-full text-forest-900 transition-colors duration-200 hover:bg-forest-100 lg:hidden"
+          className={`inline-flex h-11 w-11 items-center justify-center rounded-full transition-colors duration-200 lg:hidden ${linkHover}`}
         >
           <Icon name={open ? 'close' : 'menu'} />
         </button>

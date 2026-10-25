@@ -8,11 +8,13 @@
   --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Outfit Variable", ui-sans-serif, system-ui, sans-serif;
 
-  /* Primary: deep forest green */
+  /* Primary: deep forest green. Dark sections use 800 to 950. */
   --color-forest-50: #eef5f0;
   --color-forest-100: #d6e7dc;
   --color-forest-200: #b3d2bf;
+  --color-forest-300: #8bbb9f;
   --color-forest-400: #5f9e7b;
+  --color-forest-500: #43845f;
   --color-forest-600: #2f6b4f;
   --color-forest-700: #285a43;
   --color-forest-800: #1f4a37;
@@ -25,7 +27,7 @@
   --color-sand-200: #e8dbbf;
   --color-sand-300: #d8c69c;
 
-  /* Accent: amber. Use accent-700 for text on light backgrounds. */
+  /* Accent: amber, for buttons and small highlights only. Use accent-700 for text on light backgrounds. */
   --color-accent-300: #f8cf86;
   --color-accent-400: #f2b544;
   --color-accent-500: #e29f1d;
@@ -34,6 +36,49 @@
   /* Text */
   --color-ink: #1b2a21;
   --color-ink-muted: #44564b;
+
+  /* Page width (max-w-page): about 1200px including side padding */
+  --container-page: 75rem;
+
+  /* Soft shadows, tinted with forest green */
+  --shadow-card: 0 1px 2px rgb(23 56 42 / 0.05), 0 12px 32px -16px rgb(23 56 42 / 0.22);
+  --shadow-lift: 0 2px 4px rgb(23 56 42 / 0.06), 0 24px 48px -20px rgb(23 56 42 / 0.35);
+  --shadow-phone: 0 40px 80px -30px rgb(14 37 25 / 0.55), 0 0 0 1px rgb(14 37 25 / 0.08);
+
+  /* Motion. All of it is switched off under prefers-reduced-motion (see the end of this file). */
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+  --animate-rise: rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-hero-zoom: hero-zoom 20s ease-out both;
+  --animate-scroll-cue: scroll-cue 2.2s ease-in-out infinite;
+
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(1.25rem);
+    }
+  }
+
+  /* About 5% over 20 seconds */
+  @keyframes hero-zoom {
+    from {
+      transform: scale(1);
+    }
+    to {
+      transform: scale(1.05);
+    }
+  }
+
+  @keyframes scroll-cue {
+    0%,
+    100% {
+      transform: translateY(0);
+      opacity: 0.55;
+    }
+    50% {
+      transform: translateY(0.4rem);
+      opacity: 1;
+    }
+  }
 }
 
 @layer base {
@@ -42,13 +87,14 @@
     color: var(--color-ink);
     font-family: var(--font-sans);
     -webkit-text-size-adjust: 100%;
-    /* Anchor offset for every section: sticky header height (h-16 = 4rem) plus 1rem of space. */
+    /* Anchor offset for every section: fixed header height (h-16 = 4rem) plus 1rem of space. */
     scroll-padding-top: 5rem;
   }
 
   body {
     margin: 0;
     min-width: 320px;
+    background-color: var(--color-cream);
     overflow-x: clip;
     -webkit-font-smoothing: antialiased;
   }
@@ -64,7 +110,7 @@
     text-wrap: pretty;
   }
 
-  /* Visible keyboard focus. Dark sections switch to the lighter amber for contrast. */
+  /* Visible keyboard focus. Dark areas switch to the lighter amber for contrast. */
   :focus-visible {
     outline: 3px solid var(--color-forest-700);
     outline-offset: 3px;
@@ -77,6 +123,33 @@
   }
 }
 
+/*
+ * Scroll reveal (used by components/Reveal.tsx).
+ * main.tsx adds .motion-ok to <html> only when IntersectionObserver exists and the
+ * visitor has not asked for reduced motion. Without that class nothing is hidden,
+ * so content shows even if the script fails.
+ */
+.motion-ok [data-reveal] {
+  opacity: 0;
+  transform: translateY(1.5rem);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: calc(min(var(--reveal-index, 0), 5) * 90ms);
+}
+
+.motion-ok [data-reveal][data-inview] {
+  opacity: 1;
+  transform: none;
+}
+
+@media print {
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
 /* Smooth scrolling only for people who have not asked for less motion. */
 @media (prefers-reduced-motion: no-preference) {
   html {
@@ -84,7 +157,7 @@
   }
 }
 
-/* Respect prefers-reduced-motion: switch off transitions and animations. */
+/* Respect prefers-reduced-motion: no transitions, no animations, everything visible. */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -92,6 +165,12 @@
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+    transition-delay: 0s !important;
     scroll-behavior: auto !important;
+  }
+
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
   }
 }

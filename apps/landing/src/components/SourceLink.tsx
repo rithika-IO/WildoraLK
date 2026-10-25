@@ -1,3 +1,4 @@
+import { NEW_TAB_LABEL } from '../content/site'
 import type { Source } from '../content/types'
 import { Icon } from './Icon'
 
@@ -16,7 +17,7 @@ export function SourceLink({ source }: SourceLinkProps) {
     >
       {source.label}
       <Icon name="external" className="h-4 w-4 shrink-0" />
-      <span className="sr-only">(opens in a new tab)</span>
+      <span className="sr-only"> {NEW_TAB_LABEL}</span>
     </a>
   )
 }

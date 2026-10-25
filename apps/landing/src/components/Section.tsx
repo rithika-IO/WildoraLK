@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react'
 import type { SectionHeading } from '../content/types'
 import { Container } from './Container'
+import { Reveal } from './Reveal'
 
 export type Tone = 'light' | 'sand' | 'dark'
 
@@ -17,7 +18,7 @@ const TONE_CLASSES: Record<Tone, { section: string; eyebrow: string; intro: stri
   },
   dark: {
     section: 'bg-forest-900 text-sand-100',
-    eyebrow: 'text-accent-400',
+    eyebrow: 'text-accent-300',
     intro: 'text-forest-100',
   },
 }
@@ -25,13 +26,14 @@ const TONE_CLASSES: Record<Tone, { section: string; eyebrow: string; intro: stri
 interface SectionProps {
   heading: SectionHeading
   tone?: Tone
-  /** Optional decoration placed behind the content (should be aria-hidden). */
-  backdrop?: ReactNode
   children?: ReactNode
 }
 
-/** One page section: landmark, anchor id, and the standard eyebrow, h2 and intro. */
-export function Section({ heading, tone = 'light', backdrop, children }: SectionProps) {
+/**
+ * One page section: landmark, anchor id, and the standard eyebrow, h2 and intro.
+ * No overflow clipping here, so sticky children (How it works) keep working.
+ */
+export function Section({ heading, tone = 'light', children }: SectionProps) {
   const classes = TONE_CLASSES[tone]
   const titleId = `${heading.id}-title`
 
@@ -40,22 +42,21 @@ export function Section({ heading, tone = 'light', backdrop, children }: Section
       id={heading.id}
       aria-labelledby={titleId}
       data-tone={tone === 'dark' ? 'dark' : undefined}
-      className={`relative overflow-hidden py-16 sm:py-24 ${classes.section}`}
+      className={`relative py-20 sm:py-28 ${classes.section}`}
     >
-      {backdrop}
-      <Container className="relative">
-        <div className="max-w-2xl">
+      <Container>
+        <Reveal className="max-w-2xl">
           <p className={`text-sm font-semibold uppercase tracking-widest ${classes.eyebrow}`}>
             {heading.eyebrow}
           </p>
-          <h2 id={titleId} className="mt-3 text-3xl font-semibold leading-tight sm:text-4xl">
+          <h2 id={titleId} className="mt-3 text-4xl font-semibold leading-tight sm:text-5xl">
             {heading.title}
           </h2>
           {heading.intro ? (
-            <p className={`mt-4 text-lg leading-relaxed ${classes.intro}`}>{heading.intro}</p>
+            <p className={`mt-5 text-lg leading-relaxed sm:text-xl ${classes.intro}`}>{heading.intro}</p>
           ) : null}
-        </div>
-        {children ? <div className="mt-10 sm:mt-12">{children}</div> : null}
+        </Reveal>
+        {children ? <div className="mt-12 sm:mt-16">{children}</div> : null}
       </Container>
     </section>
   )

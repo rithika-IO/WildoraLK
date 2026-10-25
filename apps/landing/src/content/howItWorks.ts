@@ -1,66 +1,36 @@
-import type { Feature, SectionHeading } from './types'
+import type { Point, ScreenName, SectionHeading } from './types'
 
 export const HOW_HEADING: SectionHeading = {
   id: 'how-it-works',
-  eyebrow: 'How a sighting works',
-  title: 'One sighting, a fair turn for every jeep',
-  intro:
-    'Instead of everyone racing to the same spot, each sighting follows the same simple steps.',
+  eyebrow: 'How it works',
+  title: 'Four steps at every sighting',
+  intro: 'One driver reports. Everyone else gets a turn.',
 }
 
-export const HOW_STEPS: Feature[] = [
+export interface Step extends Point {
+  /** The phone screen shown while this step is active. */
+  screen: ScreenName
+}
+
+export const HOW_STEPS: Step[] = [
   {
-    icon: 'flag',
     title: 'Report',
-    text: 'A licensed driver reports a sighting in the app.',
+    text: 'A driver spots a leopard and reports it in the app. The sighting opens for a few jeeps at a time.',
+    screen: 'board',
   },
   {
-    icon: 'users',
-    title: 'The sighting opens with a cap',
-    text: 'There is a limit on how many jeeps can be at the sighting at once.',
-  },
-  {
-    icon: 'queue',
     title: 'Join the queue',
-    text: 'Other jeeps join the queue instead of racing there.',
+    text: 'Other drivers join the queue instead of racing there. Each jeep gets a turn time, saved on the phone.',
+    screen: 'queue',
   },
   {
-    icon: 'clock',
-    title: 'Get a turn time',
-    text: 'The server gives every jeep a fair turn time.',
+    title: 'Your turn',
+    text: 'The exact spot appears only when it is your turn. Before that, there is nothing to race for.',
+    screen: 'turn',
   },
   {
-    icon: 'target',
-    title: 'See the exact spot on your turn',
-    text: 'The exact location is shown only when it is that jeep\u2019s turn.',
-  },
-  {
-    icon: 'timer',
-    title: 'Viewing timer',
-    text: 'A timer keeps each visit short so everyone gets to see.',
-  },
-  {
-    icon: 'next',
-    title: 'Next jeep called',
-    text: 'When the timer ends, the next jeep in the queue is called.',
+    title: 'View and leave',
+    text: 'A timer shows how long you have left. When it ends, the next jeep is called.',
+    screen: 'viewing',
   },
 ]
-
-export const HOW_COPY = {
-  stepLabel: 'Step',
-  illustrationNote:
-    'A simple drawing, not a real place. WildoraLK never shows real animal locations on this page.',
-}
-
-export const ILLUSTRATION_COPY = {
-  today: {
-    title: 'Today',
-    caption: 'Many jeeps crowd around one leopard.',
-    alt: 'A drawing of a leopard resting on a rock, surrounded by many safari jeeps pressed close together from every side.',
-  },
-  withWildora: {
-    title: 'With WildoraLK',
-    caption: 'A few jeeps view. The others wait in a queue.',
-    alt: 'A drawing of a leopard resting on a rock with three safari jeeps viewing from a respectful distance, while four more jeeps wait in a numbered line on the road.',
-  },
-}

@@ -1,4 +1,5 @@
 import type { Fact } from '../content/types'
+import { CountUp } from './CountUp'
 import { SourceLink } from './SourceLink'
 
 interface StatCardProps {
@@ -7,13 +8,17 @@ interface StatCardProps {
   sourcesLabel: string
 }
 
-/** A key fact with its big number, a plain-language label and visible source links. */
+/** A key fact with its big number (counts up once), a plain-language label and visible source links. */
 export function StatCard({ fact, sourceLabel, sourcesLabel }: StatCardProps) {
   return (
-    <li className="flex flex-col rounded-2xl border border-sand-200 bg-white/70 p-6 shadow-sm transition duration-200 hover:-translate-y-0.5 hover:shadow-md">
-      <p className="font-display text-3xl font-semibold leading-tight text-forest-800">{fact.value}</p>
-      <p className="mt-2 flex-1 leading-relaxed text-ink-muted">{fact.label}</p>
-      <div className="mt-4 border-t border-sand-200 pt-3">
+    <div className="flex w-full flex-col rounded-3xl bg-white/80 p-7 shadow-card transition-[translate,box-shadow] duration-300 hover:shadow-lift motion-safe:hover:-translate-y-1 sm:p-9">
+      <span aria-hidden="true" className="h-1 w-10 rounded-full bg-accent-400" />
+      <CountUp
+        value={fact.value}
+        className="mt-6 font-display text-4xl font-semibold leading-tight tabular-nums text-forest-800 lg:text-5xl"
+      />
+      <p className="mt-3 flex-1 text-lg leading-relaxed text-ink-muted">{fact.label}</p>
+      <div className="mt-6 border-t border-sand-200 pt-4">
         <p className="text-xs font-semibold uppercase tracking-widest text-ink-muted">
           {fact.sources.length > 1 ? sourcesLabel : sourceLabel}
         </p>
@@ -25,6 +30,6 @@ export function StatCard({ fact, sourceLabel, sourcesLabel }: StatCardProps) {
           ))}
         </ul>
       </div>
-    </li>
+    </div>
   )
 }

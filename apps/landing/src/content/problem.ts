@@ -3,16 +3,10 @@ import type { Fact, SectionHeading, Source } from './types'
 export const PROBLEM_HEADING: SectionHeading = {
   id: 'problem',
   eyebrow: 'The problem',
-  title: 'What is a leopard jam?',
+  title: 'One leopard. Dozens of jeeps.',
   intro:
-    'When one safari jeep spots a leopard in Yala National Park, the news spreads by phone. Within minutes, dozens of jeeps race to the same spot.',
+    'When a driver spots a leopard, word goes out by phone and jeeps race to the same spot.',
 }
-
-export const PROBLEM_POINTS: string[] = [
-  'Animals can get boxed in or hit.',
-  'Drivers speed to get there first.',
-  'The park has too few rangers to enforce viewing rules everywhere.',
-]
 
 const MONGABAY_APRIL_2026: Source = {
   label: 'Mongabay, April 2026',
@@ -60,9 +54,6 @@ export const FACTS: Fact[] = [
 ]
 
 export const PROBLEM_COPY = {
-  factsHeading: 'Key facts',
   sourceLabel: 'Source',
   sourcesLabel: 'Sources',
-  closing:
-    'Switching off phone signal reduced crowding but also hurt the visitor experience. WildoraLK explores a different approach: share sightings fairly, and keep everything working even where there is no signal. It is a student idea and does not replace any rules the park sets.',
 }

@@ -1,8 +1,20 @@
 export const HERO = {
-  problem: 'When one jeep spots a leopard, dozens race to the same spot.',
-  solution:
-    'WildoraLK is an idea for a fairer way: licensed drivers share sightings through one system, a few jeeps view at a time, and the rest wait for their turn.',
-  note: 'Still being designed. Not available to use yet.',
-  ctaLabel: 'See how it works',
-  ctaTarget: 'how-it-works',
+  label: 'Yala National Park, Sri Lanka',
+  title: 'Fair turns at every leopard sighting.',
+  subtitle:
+    'A few jeeps view at a time. Everyone else gets a turn time. No racing, no jams, even where there is no signal.',
+  primaryLabel: 'See how it works',
+  primaryTarget: 'how-it-works',
+  secondaryLabel: 'Take the visitor survey',
+  secondaryEmailSubject: 'Visitor survey',
+  status: 'In development. Not available yet.',
+  scrollLabel: 'Scroll to the next section',
+  scrollTarget: 'problem',
+}
+
+export const PHOTOGRAPHER = 'Chamath Jayasundara'
+
+export const HERO_PHOTO = {
+  alt: 'A leopard resting on a tree branch under green leaves',
+  credit: `Photo: ${PHOTOGRAPHER}`,
 }

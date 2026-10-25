@@ -3,30 +3,22 @@
 export type IconName =
   | 'pin'
   | 'users'
-  | 'queue'
-  | 'clock'
   | 'target'
-  | 'timer'
-  | 'next'
-  | 'download'
   | 'bookmark'
-  | 'phone'
-  | 'upload'
-  | 'calendar'
   | 'shield'
-  | 'qr'
-  | 'chat'
-  | 'checklist'
-  | 'book'
-  | 'flag'
-  | 'eye'
-  | 'jeep'
   | 'sun'
-  | 'mail'
+  | 'book'
   | 'check'
+  | 'signal'
+  | 'signalOff'
+  | 'mail'
+  | 'next'
   | 'external'
   | 'menu'
   | 'close'
+
+/** The phone mockup screens. Each one is drawn in src/components/phone/screens.tsx. */
+export type ScreenName = 'board' | 'queue' | 'turn' | 'viewing' | 'trip'
 
 export interface Source {
   label: string
@@ -41,6 +33,12 @@ export interface Fact {
 
 export interface Feature {
   icon: IconName
+  title: string
+  text: string
+}
+
+/** A short heading and one or two sentences. Used for steps and benefit lists. */
+export interface Point {
   title: string
   text: string
 }
