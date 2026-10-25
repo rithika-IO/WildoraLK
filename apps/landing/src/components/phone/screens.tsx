@@ -1,8 +1,10 @@
 import type { ReactNode } from 'react'
 import {
   BOARD_SCREEN,
+  OPERATOR_SCREEN,
   PHONE_COPY,
   QUEUE_SCREEN,
+  SUMMARY_SCREEN,
   TRIP_SCREEN,
   TURN_SCREEN,
   VIEWING_SCREEN,
@@ -202,6 +204,62 @@ function VisitorTripScreen() {
   )
 }
 
+function OperatorScreen() {
+  const s = OPERATOR_SCREEN
+  return (
+    <Shell time={s.time} title={s.title}>
+      <div className={CARD}>
+        <div className="flex items-center justify-between">
+          <p className="font-display text-base font-bold text-forest-900">{s.name}</p>
+          <span className="text-xs font-semibold text-accent-700">{s.ratingLabel}</span>
+        </div>
+        <div className="mt-3 inline-flex items-center gap-1.5 rounded-full bg-forest-100 px-2.5 py-1 text-[0.6875rem] font-semibold text-forest-800">
+          <Icon name="shield" className="h-3.5 w-3.5 text-forest-700" />
+          {s.conductBadge}
+        </div>
+        <div className="mt-3 border-t border-sand-100 pt-2 text-[0.6875rem] text-ink-muted">
+          <span className="font-semibold">{s.languagesLabel}: </span>
+          <span>{s.languages}</span>
+        </div>
+      </div>
+      <div className="mt-auto flex items-center gap-2 rounded-2xl bg-forest-50 p-3 text-xs leading-snug text-forest-900">
+        <Icon name="check" className="mt-px h-4 w-4 shrink-0 text-forest-700" />
+        {s.verified}
+      </div>
+    </Shell>
+  )
+}
+
+function SummaryScreen() {
+  const s = SUMMARY_SCREEN
+  return (
+    <Shell time={s.time} offline title={s.title}>
+      <div className="grid gap-2">
+        <div className="rounded-2xl bg-forest-900 p-3 text-cream">
+          <p className="text-[0.625rem] font-semibold uppercase tracking-wider text-forest-200">
+            {s.parkTimeLabel}
+          </p>
+          <p className="mt-0.5 font-display text-2xl font-bold leading-tight">{s.parkTime}</p>
+        </div>
+        <div className="grid grid-cols-2 gap-2">
+          <div className={CARD}>
+            <p className={SMALL_LABEL}>{s.speciesLabel}</p>
+            <p className="mt-1 font-display text-xl font-bold text-forest-900">{s.species}</p>
+          </div>
+          <div className={CARD}>
+            <p className={SMALL_LABEL}>{s.calmLabel}</p>
+            <p className="mt-1 font-display text-xl font-bold text-forest-900">{s.calm}</p>
+          </div>
+        </div>
+      </div>
+      <div className="mt-auto flex items-center gap-2 rounded-2xl bg-forest-50 p-2.5 text-xs font-medium text-forest-900">
+        <Icon name="bookmark" className="mt-px h-3.5 w-3.5 shrink-0 text-forest-700" />
+        {s.badge}
+      </div>
+    </Shell>
+  )
+}
+
 /** One named phone screen. Wrap it in PhoneFrame. */
 export function PhoneScreen({ name }: { name: ScreenName }) {
   switch (name) {
@@ -215,5 +273,9 @@ export function PhoneScreen({ name }: { name: ScreenName }) {
       return <ViewingScreen />
     case 'trip':
       return <VisitorTripScreen />
+    case 'operator':
+      return <OperatorScreen />
+    case 'summary':
+      return <SummaryScreen />
   }
 }

@@ -1,44 +1,39 @@
 import type { Feature, SectionHeading } from './types'
 
 export const FEATURES_HEADING: SectionHeading = {
-  id: 'features',
-  eyebrow: 'Features',
-  title: 'What makes it different',
+  id: 'why-fair',
+  chapter: '07',
+  eyebrow: 'Why it is fair',
+  title: 'How the queue stays fair',
+  intro:
+    'Rules apply equally to every jeep. Honest driving earns higher rank and direct bookings.',
 }
 
-/** Bento tiles, in order. The first tile is the large one. */
+/** Bento tiles without the offline tile that repeats chapter 05. */
 export const FEATURES: Feature[] = [
-  {
-    icon: 'signalOff',
-    title: 'Works without signal',
-    text: 'The park map, the rules and your turn time are saved on your phone before you go.',
-  },
   {
     icon: 'target',
     title: 'Exact spot only on your turn',
-    text: 'Until then you see the zone, so there is nothing to race for.',
+    text: 'Until your turn begins you see only the zone. There is nothing to race toward.',
   },
   {
     icon: 'shield',
     title: 'Conduct score from evidence, with appeals',
-    text: 'Only clear rule breaks and verified visitor reports count, and drivers can appeal.',
+    text: 'Only clear rule breaks and verified visitor reports count. Drivers can view evidence and appeal.',
   },
   {
     icon: 'sun',
     title: 'Best time to go',
-    text: 'See which sessions are likely to be quieter before you book.',
+    text: 'See which sessions are likely to be quieter before booking your safari entrance.',
   },
   {
     icon: 'users',
     title: 'Shared safaris',
-    text: 'Share a jeep with other visitors and split the cost.',
+    text: 'Share an authorised jeep with other visitors to reduce park traffic and split trip costs.',
   },
   {
     icon: 'book',
     title: 'Offline field guide',
-    text: 'Look up what you see in Sinhala, Tamil or English, even with no signal.',
+    text: 'Look up birds, mammals and trees in Sinhala, Tamil or English directly from your seat.',
   },
 ]
-
-/** Small checklist shown on the large "Works without signal" tile. */
-export const OFFLINE_ITEMS: string[] = ['Park map', 'Viewing rules', 'Your turn time']

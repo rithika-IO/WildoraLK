@@ -1,26 +1,25 @@
 import { Icon } from '../components/Icon'
 import { Reveal } from '../components/Reveal'
 import { Section } from '../components/Section'
-import { FEATURES, FEATURES_HEADING, OFFLINE_ITEMS } from '../content/features'
+import { FEATURES, FEATURES_HEADING } from '../content/features'
 
 /**
- * Grid spans per tile, in the same order as FEATURES.
- * Desktop (4 columns): one large tile, a wide tile, two small, then two wide.
+ * Grid spans per tile for 5 items in a 3-column desktop layout.
+ * Row 1: col-span-2, col-span-1
+ * Row 2: col-span-1, col-span-1, col-span-1
  */
 const SPANS = [
-  'sm:col-span-2 lg:row-span-2',
-  'lg:col-span-2',
-  '',
-  '',
-  'lg:col-span-2',
-  'sm:col-span-2',
+  'sm:col-span-2 lg:col-span-2',
+  'sm:col-span-1 lg:col-span-1',
+  'sm:col-span-1 lg:col-span-1',
+  'sm:col-span-1 lg:col-span-1',
+  'sm:col-span-2 lg:col-span-1',
 ]
 
-/** Bento grid: six tiles of different sizes in one CSS grid. */
 export function Features() {
   return (
     <Section heading={FEATURES_HEADING} tone="dark">
-      <ul className="grid gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-4">
+      <ul className="grid gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
         {FEATURES.map((feature, index) => {
           const large = index === 0
           return (
@@ -43,27 +42,18 @@ export function Features() {
                 >
                   <Icon name={feature.icon} className={large ? 'h-8 w-8' : 'h-6 w-6'} />
                 </span>
-                {large ? (
-                  <ul className="relative mt-auto flex flex-wrap gap-2 pt-24">
-                    {OFFLINE_ITEMS.map((item) => (
-                      <li
-                        key={item}
-                        className="flex items-center gap-1.5 rounded-full bg-forest-900 px-3 py-1.5 text-sm font-medium text-forest-100"
-                      >
-                        <Icon name="check" className="h-4 w-4 text-accent-300" />
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                ) : null}
                 <h3
-                  className={`relative font-semibold leading-snug text-cream ${
+                  className={`relative font-display font-semibold leading-snug text-cream ${
                     large ? 'mt-6 text-3xl sm:text-4xl' : 'mt-auto pt-8 text-xl'
                   }`}
                 >
                   {feature.title}
                 </h3>
-                <p className={`mt-2 leading-relaxed text-forest-100 ${large ? 'max-w-sm text-lg' : ''}`}>
+                <p
+                  className={`mt-2 leading-relaxed text-forest-100 ${
+                    large ? 'max-w-md text-lg' : 'text-sm'
+                  }`}
+                >
                   {feature.text}
                 </p>
               </div>

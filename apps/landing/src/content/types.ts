@@ -18,7 +18,7 @@ export type IconName =
   | 'close'
 
 /** The phone mockup screens. Each one is drawn in src/components/phone/screens.tsx. */
-export type ScreenName = 'board' | 'queue' | 'turn' | 'viewing' | 'trip'
+export type ScreenName = 'board' | 'queue' | 'turn' | 'viewing' | 'trip' | 'operator' | 'summary'
 
 export interface Source {
   label: string
@@ -45,7 +45,12 @@ export interface Point {
 
 export interface SectionHeading {
   id: string
+  /** Chapter number shown in the label, for example '04' gives "(04)". */
+  chapter?: string
+  /** Short chapter name, shown in the label after the number. */
   eyebrow: string
+  /** Optional small pill next to the label, for example "Demo". */
+  tag?: string
   title: string
   intro?: string
 }

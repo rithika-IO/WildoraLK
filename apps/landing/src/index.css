@@ -7,6 +7,8 @@
 @theme {
   --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Outfit Variable", ui-sans-serif, system-ui, sans-serif;
+  /* Editorial serif (class font-serif): chapter headings (h2), chapter labels and large numbers only. */
+  --font-serif: "Fraunces Variable", ui-serif, Georgia, serif;
 
   /* Primary: deep forest green. Dark sections use 800 to 950. */
   --color-forest-50: #eef5f0;
@@ -81,6 +83,24 @@
   }
 }
 
+@keyframes item-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.5rem) scale(0.97);
+  }
+}
+
+@keyframes map-pulse {
+  from {
+    opacity: 0.55;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(2.4);
+  }
+}
+
 @layer base {
   html {
     background-color: var(--color-cream);
@@ -141,6 +161,48 @@
 .motion-ok [data-reveal][data-inview] {
   opacity: 1;
   transform: none;
+}
+
+/*
+ * Queue demo list items (sections/QueueDemo.tsx). New items rise in; leaving items
+ * fade and slide out before they are removed. Transform and opacity only.
+ */
+.motion-ok .demo-item {
+  animation: item-in 0.35s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+
+.demo-item[data-leaving] {
+  animation: none;
+  opacity: 0;
+  transform: translateX(0.75rem) scale(0.97);
+}
+
+/* Sighting map (components/SightingMap.tsx): the pulse ring around the leopard in jam mode. */
+.map-pulse {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.motion-ok .map-pulse[data-on] {
+  animation: map-pulse 1.8s ease-out infinite;
+}
+
+/* No-signal scene (sections/NoSignal.tsx): bars shrink and fade one by one. */
+.signal-bar {
+  transform-box: fill-box;
+  transform-origin: bottom;
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+}
+
+.signal-bar[data-off] {
+  opacity: 0.15;
+  transform: scaleY(0.25);
 }
 
 @media print {

@@ -20,10 +20,9 @@ export const NEW_TAB_LABEL = '(opens in a new tab)'
 
 /** Links shown in the header and the mobile menu. `id` must match a section id. */
 export const NAV_LINKS: NavLink[] = [
-  { id: 'problem', label: 'The problem' },
   { id: 'how-it-works', label: 'How it works' },
-  { id: 'drivers-and-visitors', label: 'Drivers and visitors' },
-  { id: 'features', label: 'What’s different' },
+  { id: 'try-it', label: 'Try it' },
+  { id: 'in-the-field', label: 'In the field' },
   { id: 'team', label: 'Team' },
   { id: 'get-involved', label: 'Get involved' },
 ]

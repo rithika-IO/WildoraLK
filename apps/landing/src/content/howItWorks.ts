@@ -2,6 +2,7 @@ import type { Point, ScreenName, SectionHeading } from './types'
 
 export const HOW_HEADING: SectionHeading = {
   id: 'how-it-works',
+  chapter: '03',
   eyebrow: 'How it works',
   title: 'Four steps at every sighting',
   intro: 'One driver reports. Everyone else gets a turn.',

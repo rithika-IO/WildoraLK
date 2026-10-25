@@ -15,7 +15,7 @@ export function StatCard({ fact, sourceLabel, sourcesLabel }: StatCardProps) {
       <span aria-hidden="true" className="h-1 w-10 rounded-full bg-accent-400" />
       <CountUp
         value={fact.value}
-        className="mt-6 font-display text-4xl font-semibold leading-tight tabular-nums text-forest-800 lg:text-5xl"
+        className="mt-6 font-serif text-4xl font-semibold leading-tight tabular-nums text-forest-800 lg:text-5xl"
       />
       <p className="mt-3 flex-1 text-lg leading-relaxed text-ink-muted">{fact.label}</p>
       <div className="mt-6 border-t border-sand-200 pt-4">

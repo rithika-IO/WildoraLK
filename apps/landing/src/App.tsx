@@ -1,14 +1,17 @@
 import { useEffect } from 'react'
 import { SkipLink } from './components/SkipLink'
 import { useInView } from './hooks/useInView'
-import { Audiences } from './sections/Audiences'
+import { FairTurn } from './sections/FairTurn'
 import { Features } from './sections/Features'
 import { Footer } from './sections/Footer'
 import { GetInvolved } from './sections/GetInvolved'
 import { Header } from './sections/Header'
 import { Hero } from './sections/Hero'
 import { HowItWorks } from './sections/HowItWorks'
+import { InTheField } from './sections/InTheField'
+import { NoSignal } from './sections/NoSignal'
 import { Problem } from './sections/Problem'
+import { QueueDemo } from './sections/QueueDemo'
 import { Team } from './sections/Team'
 
 /** The whole page: one scrolling layout, one section component per block, in reading order. */
@@ -40,11 +43,23 @@ function App() {
       <Header overHero={overHero} atTop={atTop} />
       <main id="main" tabIndex={-1} className="outline-none">
         <Hero ref={heroRef} />
+        {/* (01) The jam */}
         <Problem />
+        {/* (02) A fair turn */}
+        <FairTurn />
+        {/* (03) How it works */}
         <HowItWorks />
-        <Audiences />
+        {/* (04) Try it */}
+        <QueueDemo />
+        {/* (05) Even with no signal */}
+        <NoSignal />
+        {/* (06) In the field */}
+        <InTheField />
+        {/* (07) Why it is fair */}
         <Features />
+        {/* (08) The team */}
         <Team />
+        {/* (09) Help us build it */}
         <GetInvolved />
       </main>
       <Footer />

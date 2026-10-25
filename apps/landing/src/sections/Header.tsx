@@ -2,7 +2,8 @@ import { useRef, useState } from 'react'
 import type { KeyboardEvent } from 'react'
 import { Container } from '../components/Container'
 import { Icon } from '../components/Icon'
-import { HEADER_COPY, NAV_LINKS, SITE_NAME } from '../content/site'
+import { HEADER_COPY, NAV_LINKS, SITE_NAME, SURVEY_VISITOR_URL } from '../content/site'
+import { surveyHref } from '../lib/links'
 
 interface HeaderProps {
   /** True while the hero photo is behind the header. The header is then see-through with light text. */
@@ -27,6 +28,8 @@ export function Header({ overHero, atTop }: HeaderProps) {
   }
 
   const linkHover = solid ? 'hover:bg-forest-100 hover:text-forest-900' : 'hover:bg-cream/15'
+  const surveyUrl = surveyHref(SURVEY_VISITOR_URL, 'Visitor survey')
+  const isExternalSurvey = SURVEY_VISITOR_URL.startsWith('http')
 
   return (
     <header
@@ -52,7 +55,7 @@ export function Header({ overHero, atTop }: HeaderProps) {
           <span className="sr-only"> ({SITE_NAME})</span>
         </a>
 
-        <nav aria-label={HEADER_COPY.navLabel} className="hidden lg:block">
+        <nav aria-label={HEADER_COPY.navLabel} className="hidden lg:flex lg:items-center lg:gap-3">
           <ul className="flex items-center gap-1">
             {NAV_LINKS.map((link) => (
               <li key={link.id}>
@@ -65,6 +68,14 @@ export function Header({ overHero, atTop }: HeaderProps) {
               </li>
             ))}
           </ul>
+          <a
+            href={surveyUrl}
+            target={isExternalSurvey ? '_blank' : undefined}
+            rel={isExternalSurvey ? 'noopener noreferrer' : undefined}
+            className="rounded-full bg-accent-400 px-4 py-2 text-sm font-semibold text-forest-950 shadow-xs transition-colors duration-200 hover:bg-accent-300"
+          >
+            Take the survey
+          </a>
         </nav>
 
         <button
@@ -88,18 +99,29 @@ export function Header({ overHero, atTop }: HeaderProps) {
         }`}
       >
         <nav aria-label={HEADER_COPY.mobileNavLabel} className="overflow-hidden">
-          <ul className="flex flex-col px-5 py-3 sm:px-8">
+          <ul className="flex flex-col gap-1 px-5 py-4 sm:px-8">
             {NAV_LINKS.map((link) => (
               <li key={link.id}>
                 <a
                   href={`#${link.id}`}
                   onClick={() => setOpen(false)}
-                  className="block rounded-xl px-3 py-3 text-base font-medium text-ink transition-colors duration-200 hover:bg-forest-100"
+                  className="block rounded-xl px-3 py-2.5 text-base font-medium text-ink transition-colors duration-200 hover:bg-forest-100"
                 >
                   {link.label}
                 </a>
               </li>
             ))}
+            <li className="pt-2">
+              <a
+                href={surveyUrl}
+                target={isExternalSurvey ? '_blank' : undefined}
+                rel={isExternalSurvey ? 'noopener noreferrer' : undefined}
+                onClick={() => setOpen(false)}
+                className="flex w-full items-center justify-center rounded-xl bg-accent-400 px-4 py-3 text-center text-base font-semibold text-forest-950 shadow-xs transition-colors duration-200 hover:bg-accent-300"
+              >
+                Take the survey
+              </a>
+            </li>
           </ul>
         </nav>
       </div>

@@ -3,7 +3,8 @@ import type { SectionHeading } from './types'
 
 export const GET_INVOLVED_HEADING: SectionHeading = {
   id: 'get-involved',
-  eyebrow: 'Get involved',
+  chapter: '09',
+  eyebrow: 'Help us build it',
   title: 'Help us shape WildoraLK',
   intro: 'We want to hear from people who know Yala first-hand.',
 }

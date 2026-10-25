@@ -60,6 +60,30 @@ export const TRIP_SCREEN = {
   calm: 'No need to ask your driver to hurry.',
 }
 
+export const OPERATOR_SCREEN = {
+  time: '08:15',
+  title: 'Operator',
+  name: 'Yala Tracks',
+  conductBadge: 'Very good conduct',
+  rating: '4.5',
+  ratingLabel: '★ 4.5 (38 trips)',
+  languages: 'Sinhala, English',
+  languagesLabel: 'Languages',
+  verified: 'Verified park licence',
+}
+
+export const SUMMARY_SCREEN = {
+  time: '11:45',
+  title: 'Trip summary',
+  parkTimeLabel: 'Time in park',
+  parkTime: '3 h 10 min',
+  speciesLabel: 'Species seen',
+  species: '6',
+  calmLabel: 'Calm viewing time',
+  calm: '24 min',
+  badge: 'Trip saved to your device',
+}
+
 /** What screen readers hear for each phone mockup. */
 export const SCREEN_LABELS: Record<ScreenName, string> = {
   board:
@@ -70,4 +94,8 @@ export const SCREEN_LABELS: Record<ScreenName, string> = {
   viewing:
     'Phone screen: a timer shows 07:31 of viewing time left. Arrived 10:43, detected by GPS.',
   trip: 'Phone screen: your trip in Jeep J-114. Your place is 2 of 3 and your turn is saved.',
+  operator:
+    'Phone screen: operator card for Yala Tracks showing Very good conduct badge, 4.5 rating, and languages.',
+  summary:
+    'Phone screen: safari summary showing time in park 3 h 10 min, 6 species seen, and 24 min calm viewing time.',
 }

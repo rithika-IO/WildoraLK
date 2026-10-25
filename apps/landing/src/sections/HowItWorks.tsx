@@ -63,7 +63,7 @@ export function HowItWorks() {
   const [active, setActive] = useState(0)
 
   return (
-    <Section heading={HOW_HEADING} tone="sand">
+    <Section heading={HOW_HEADING} tone="light">
       <div className="lg:grid lg:grid-cols-2 lg:gap-16">
         <ol className="space-y-20 lg:-my-[15svh] lg:space-y-0">
           {HOW_STEPS.map((step, index) => (

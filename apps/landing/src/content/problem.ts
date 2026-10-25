@@ -2,7 +2,8 @@ import type { Fact, SectionHeading, Source } from './types'
 
 export const PROBLEM_HEADING: SectionHeading = {
   id: 'problem',
-  eyebrow: 'The problem',
+  chapter: '01',
+  eyebrow: 'The jam',
   title: 'One leopard. Dozens of jeeps.',
   intro:
     'When a driver spots a leopard, word goes out by phone and jeeps race to the same spot.',

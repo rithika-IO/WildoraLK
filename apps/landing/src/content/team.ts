@@ -2,7 +2,8 @@ import type { SectionHeading } from './types'
 
 export const TEAM_HEADING: SectionHeading = {
   id: 'team',
-  eyebrow: 'Team',
+  chapter: '08',
+  eyebrow: 'The team',
   title: 'Who is building it',
   intro: 'Software Engineering undergraduates at IIT, building WildoraLK for the Agile Team Project.',
 }
