@@ -21,18 +21,20 @@ export interface InvolvedCard {
 export const INVOLVED_CARDS: InvolvedCard[] = [
   {
     title: 'Been on a Yala safari?',
-    text: 'Tell us what the leopard sightings were like for you.',
+    text: 'Tell us what it was like. About 4 minutes.',
     buttonLabel: 'Take the visitor survey',
     url: SURVEY_VISITOR_URL,
     emailSubject: 'Visitor survey',
   },
   {
-    title: 'Drive a safari jeep in Yala?',
-    text: 'Tell us how sightings work for you today.',
+    title: 'Drive safaris in Yala?',
+    text: 'Tell us if fair turns would work for you. About 7 minutes.',
     buttonLabel: 'Take the driver survey',
     url: SURVEY_DRIVER_URL,
     emailSubject: 'Driver survey',
   },
 ]
+
+export const ANONYMOUS_NOTE = "Anonymous. We don't collect names, emails or phone numbers."
 
 export const EMAIL_LEAD = 'For anything else, email'

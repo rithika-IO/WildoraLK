@@ -4,11 +4,13 @@ export const SITE_NAME = 'WildoraLK'
 
 export const CONTACT_EMAIL = 'wildoralk.team@gmail.com'
 
-// TODO: Add the visitor survey link (for example a Google Form). While empty, the button opens an email to CONTACT_EMAIL.
-export const SURVEY_VISITOR_URL = ''
+export const SURVEY_VISITOR_URL =
+  'https://docs.google.com/forms/d/e/1FAIpQLSdO5v0KBsxeBaFv36snQfH4F81lPYywnEzinsjNK_MiKNzyvg/viewform'
+export const VISITOR_SURVEY_URL = SURVEY_VISITOR_URL
 
-// TODO: Add the driver survey or contact link. While empty, the button opens an email to CONTACT_EMAIL.
-export const SURVEY_DRIVER_URL = ''
+export const SURVEY_DRIVER_URL =
+  'https://docs.google.com/forms/d/e/1FAIpQLSe2TU2__jMuG3d2i9fQ5Y-O5pRDFk2q2jqzzZ4T4fEmWacxeA/viewform'
+export const DRIVER_SURVEY_URL = SURVEY_DRIVER_URL
 
 // TODO: Confirm the name to show in the footer copyright line.
 export const COPYRIGHT_HOLDER = 'WildoraLK student team'

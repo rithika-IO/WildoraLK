@@ -2,7 +2,7 @@ import { Button } from '../components/Button'
 import { Icon } from '../components/Icon'
 import { Reveal } from '../components/Reveal'
 import { Section } from '../components/Section'
-import { EMAIL_LEAD, GET_INVOLVED_HEADING, INVOLVED_CARDS } from '../content/getInvolved'
+import { ANONYMOUS_NOTE, EMAIL_LEAD, GET_INVOLVED_HEADING, INVOLVED_CARDS } from '../content/getInvolved'
 import { CONTACT_EMAIL } from '../content/site'
 import { surveyHref } from '../lib/links'
 
@@ -25,7 +25,11 @@ export function GetInvolved() {
         ))}
       </div>
 
-      <Reveal className="mt-10">
+      <Reveal className="mt-6">
+        <p className="text-base text-ink-muted">{ANONYMOUS_NOTE}</p>
+      </Reveal>
+
+      <Reveal className="mt-8">
         <p className="flex flex-wrap items-center gap-x-2 gap-y-1 text-lg text-ink-muted">
           <Icon name="mail" className="h-5 w-5 text-forest-700" />
           {EMAIL_LEAD}
