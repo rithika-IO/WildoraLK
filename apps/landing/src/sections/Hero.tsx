@@ -93,16 +93,6 @@ export function Hero({ ref }: HeroProps) {
           <p className={`mt-5 text-sm text-cream/80 ${RISE} [animation-delay:480ms]`}>{HERO.status}</p>
         </div>
       </Container>
-
-      <a
-        href={`#${HERO.scrollTarget}`}
-        className={`absolute bottom-4 left-1/2 flex h-11 w-11 -translate-x-1/2 items-center justify-center rounded-full text-cream/85 transition-colors duration-200 hover:text-cream ${RISE} [animation-delay:900ms]`}
-      >
-        <span className="sr-only">{HERO.scrollLabel}</span>
-        <span className="flex h-9 w-6 justify-center rounded-full border-2 border-current pt-1.5">
-          <span className="h-2 w-1 rounded-full bg-current motion-safe:animate-scroll-cue" />
-        </span>
-      </a>
     </section>
   )
 }

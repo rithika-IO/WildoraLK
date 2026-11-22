@@ -69,7 +69,7 @@ export function QueueDemo() {
             <span className="text-xs font-semibold uppercase tracking-wider text-ink-muted">
               {QUEUE_DEMO_COPY.clockLabel}
             </span>
-            <p className="font-serif text-3xl font-semibold tabular-nums text-forest-900 sm:text-4xl">
+            <p className="font-display text-3xl font-semibold tabular-nums text-forest-900 sm:text-4xl">
               {formatTime(clock)}
             </p>
           </div>

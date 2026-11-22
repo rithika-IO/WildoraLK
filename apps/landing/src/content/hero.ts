@@ -8,8 +8,6 @@ export const HERO = {
   secondaryLabel: 'Take the visitor survey',
   secondaryEmailSubject: 'Visitor survey',
   status: 'In development. Not available yet.',
-  scrollLabel: 'Scroll to the next section',
-  scrollTarget: 'problem',
 }
 
 export const PHOTOGRAPHER = 'Chamath Jayasundara'

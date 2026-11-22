@@ -49,7 +49,7 @@ export function Section({ heading, tone = 'light', media, mediaSide = 'right', c
 
   const text = (
     <Reveal className="max-w-2xl">
-      <p className={`flex flex-wrap items-center gap-x-3 gap-y-2 font-serif text-lg font-medium ${classes.eyebrow}`}>
+      <p className={`flex flex-wrap items-center gap-x-3 gap-y-2 font-display text-lg font-medium ${classes.eyebrow}`}>
         <span>
           {heading.chapter ? <span className="tabular-nums">({heading.chapter}) </span> : null}
           {heading.eyebrow}
@@ -64,7 +64,7 @@ export function Section({ heading, tone = 'light', media, mediaSide = 'right', c
       </p>
       <h2
         id={titleId}
-        className="mt-4 font-serif text-5xl font-semibold leading-[1.04] tracking-tight sm:text-6xl lg:text-7xl"
+        className="mt-4 font-display text-5xl font-semibold leading-[1.04] tracking-tight sm:text-6xl lg:text-7xl"
       >
         {heading.title}
       </h2>
