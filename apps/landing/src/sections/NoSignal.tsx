@@ -130,7 +130,7 @@ export function NoSignal() {
             <span className="text-[0.6875rem] font-semibold uppercase tracking-wider text-forest-200">
               {NO_SIGNAL_COPY.startsInLabel}
             </span>
-            <p className="mt-1 font-serif text-4xl font-bold tabular-nums text-accent-300">
+            <p className="mt-1 font-display text-4xl font-bold tabular-nums text-accent-300">
               {formatCountdown(seconds)}
             </p>
           </div>

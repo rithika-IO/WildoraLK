@@ -7,8 +7,6 @@
 @theme {
   --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Outfit Variable", ui-sans-serif, system-ui, sans-serif;
-  /* Editorial serif (class font-serif): chapter headings (h2), chapter labels and large numbers only. */
-  --font-serif: "Fraunces Variable", ui-serif, Georgia, serif;
 
   /* Primary: deep forest green. Dark sections use 800 to 950. */
   --color-forest-50: #eef5f0;
@@ -51,7 +49,6 @@
   --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
   --animate-rise: rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
   --animate-hero-zoom: hero-zoom 20s ease-out both;
-  --animate-scroll-cue: scroll-cue 2.2s ease-in-out infinite;
 
   @keyframes rise {
     from {
@@ -67,18 +64,6 @@
     }
     to {
       transform: scale(1.05);
-    }
-  }
-
-  @keyframes scroll-cue {
-    0%,
-    100% {
-      transform: translateY(0);
-      opacity: 0.55;
-    }
-    50% {
-      transform: translateY(0.4rem);
-      opacity: 1;
     }
   }
 }
